@@ -18,12 +18,12 @@ pipeline {
                                         //def mensajef = "Build status ${buildStatus}: [Alejandro Elgueta] [${params.herramienta}] Ejecucion fallida en stage [${TAREA}]"
                                         echo "buildtool usada " + params.herramienta
                                         if (params.herramienta == 'gradle' ){
-                                                def ejecucion = load 'gradle.groovy'
-                                                ejecucion.call()
+                                                //def ejecucion = load 'gradle.groovy'
+                                                gradle.call()
 
                                         } else {
-                                                def ejecucion = load 'maven.groovy'
-                                                ejecucion.call()
+                                                //def ejecucion = load 'maven.groovy'
+                                                maven.call()
 
                                         }
 
