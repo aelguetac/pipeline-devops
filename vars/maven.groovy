@@ -1,4 +1,5 @@
 def call(){
+	echo "Inicio maven.goovy"
 	def cstage = params.stage.split(';')
 //	for (int i = 0 ; i < cstage.length; i++){
 	switch("cstage"){

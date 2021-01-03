@@ -19,8 +19,8 @@ pipeline {
                                         //def cadena = "{env.TAREA}"
                                         //def mensajes = "Build status ${buildStatus}: [Alejandro Elgueta] [${params.herramienta}] Ejecucion exitosa"
                                         //def mensajef = "Build status ${buildStatus}: [Alejandro Elgueta] [${params.herramienta}] Ejecucion fallida en stage [${TAREA}]"
-                                        echo "buildtool usada " + params.herramienta
-					echo "stage a ejecutar" + params.stage
+                                        echo "buildtool usada :" + params.herramienta
+					echo "stage a ejecutar :" + params.stage
                                         if (params.herramienta == 'gradle' ){
                                                 //def ejecucion = load 'gradle.groovy'
                                                 gradle.call()
