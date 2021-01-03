@@ -10,7 +10,7 @@ def call(){
 //			when { expression { ${cstage[i]} == 'build' }}
 //			when { expression { "${params.stage}" == "build" }}
 			env.TAREA = env.STAGE_NAME
-                        sh "./mvn clean compile"
+                        sh 'mvn clean pakage'
 
 			}
         break
@@ -31,6 +31,7 @@ def call(){
                         stage('Run'){
                         env.TAREA = env.STAGE_NAME
                         sh 'nohup mvn spring-boot:run &'
+
                         }
 	break
 	case "test":
