@@ -1,7 +1,8 @@
 def call(){
 	echo "Inicio maven.goovy"
 	def cstage = params.stage.split(';')
-//	for (int i = 0 ; i < cstage.length; i++){
+	for (int i = 0 ; i < cstage.length; i++){
+
 	switch("cstage"){
 	case "build":
 			stage('build test') {
@@ -50,7 +51,7 @@ def call(){
 
                         }
 
-
+		}
 	}
 }
 return this;
