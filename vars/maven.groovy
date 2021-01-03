@@ -5,8 +5,9 @@ def call(){
 
 	switch("cstage"){
 	case "build":
-			stage('build test') {
-                        env.TAREA = env.STAGE_NAME
+			stage('build') {
+                        when { expression { env.cstage == 'build' }}
+			env.TAREA = env.STAGE_NAME
                         sh "./mavenw clean build"
 
 			}
