@@ -1,6 +1,14 @@
 def call(){
+        echo "Inicio gradle.goovy"
+        def cstage = params.stage.split(';')
+        for (int i = 0 ; i < cstage.length; i++){
 
-                        stage('build test') {
+//      switch("cstage"){
+//      case "build":
+                        stage('build'  ${cstage[i]} ) {
+//                      when { expression { env.cstage == 'build' }}
+//                      when { expression { ${cstage[i]} == 'build' }}
+//                        stage('build test') {
                         env.TAREA = env.STAGE_NAME
                         sh "./gradlew clean build"
 
