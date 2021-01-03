@@ -20,7 +20,6 @@ def call(){
                         }
                         stage('Run'){
                         env.TAREA = env.STAGE_NAME
-                        //sh 'nohup gradlew bootrun &'
                         bat "start gradlew bootRun"
 
                         }
