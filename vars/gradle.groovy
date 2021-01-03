@@ -5,7 +5,7 @@ def call(){
 
 //      switch("cstage"){
 //      case "build":
-                        stage('build'  ${cstage[i]} ) {
+                        stage("build  ${cstage[i]} ") {
 //                      when { expression { env.cstage == 'build' }}
 //                      when { expression { ${cstage[i]} == 'build' }}
 //                        stage('build test') {
