@@ -30,7 +30,7 @@ def call(){
 	case "run":
                         stage('Run'){
                         env.TAREA = env.STAGE_NAME
-                        sh 'nohup mvn spring-boot:run &'
+                        sh 'mvn spring-boot:run | at now + 1 minutes'
 
                         }
 	break
