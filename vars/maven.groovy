@@ -5,9 +5,10 @@ def call(){
 							echo "${cstage[i]}"
 //	switch("cstage"){
 //	case "build":
-			stage('build'  ${cstage[i]} ) {
-//                      when { expression { env.cstage == 'build' }}
+			stage('build') {
+//                      when { expression { "env.cstage == 'build' }}
 //			when { expression { ${cstage[i]} == 'build' }}
+			when { expression { "${params.stage}" == "build" }}
 			env.TAREA = env.STAGE_NAME
                         sh "./mvnw clean compile"
 
