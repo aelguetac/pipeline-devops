@@ -2,7 +2,7 @@ def call(){
 	echo "Inicio maven.goovy"
 	def cstage = params.stage.split(';')
 	for (int i = 0 ; i < cstage.length; i++){
-							echo "${cstage[i]}"
+							echo " el primer for para ${cstage[i]}"
 //	switch("cstage"){
 //	case "build":
 			stage('build') {
