@@ -3,7 +3,7 @@ def call(){
 	def cstage = params.stage.split(';')
 	for (int i = 0 ; i < cstage.length; i++){
 							echo " el primer for para ${cstage[i]}"
-	switch(${cstage[i]}){
+	switch("${cstage[i]}"){
 	case "build":
 			stage('build') {
 //                      when { expression { "env.cstage == 'build' }}
