@@ -1,16 +1,7 @@
 def call(){
-
-	switch(stage.herramienta){
-/*	if (stage.herramienta == 'build' ){
-                                                //def ejecucion = load 'gradle.groovy'
-                                                gradle.call()
-
-                                        } else {
-                                                //def ejecucion = load 'maven.groovy'
-                                                maven.call()
-
-                                        }
-*/
+	def cstage = params.stage.split(';')
+//	for (int i = 0 ; i < cstage.length; i++){
+	switch("cstage"){
 	case "build":
 			stage('build test') {
                         env.TAREA = env.STAGE_NAME
