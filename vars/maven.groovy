@@ -10,7 +10,7 @@ def call(){
 //			when { expression { ${cstage[i]} == 'build' }}
 			when { expression { "${params.stage}" == "build" }}
 			env.TAREA = env.STAGE_NAME
-                        sh "./mvnw clean compile"
+                        sh "./mvn clean compile"
 
 			}
 //        break
