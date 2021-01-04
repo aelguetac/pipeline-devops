@@ -40,7 +40,8 @@ pipeline {
 						maven.call()
 						} else {
 						echo "maven sin parametros stage"
-                                                build job: 'Pipeline', parameters [string(name: 'stage' , value: 'buid;sonar;run;test;nexus')]
+						def stage = 'buid;sonar;run;test;nexus'
+                                                //build job: 'Pipeline', parameters [string(name: 'stage' , value: 'buid;sonar;run;test;nexus')]
                                                 maven.call()
 					//	} else {
 					//	maven.call()
