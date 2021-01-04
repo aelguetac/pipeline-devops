@@ -1,4 +1,4 @@
-
+1
 def call(){
   
 pipeline {
@@ -6,6 +6,7 @@ pipeline {
 
         parameters { 
 		choice(name: 'herramienta', choices : ['gradle','maven'], description :'')
+		message { se deben ingresar uno o mas de estos stage: buid;sonar;run;test;nexus, si no se ingresa ningun stage se ejecutaran todos }
 		string(name: 'stage' , defaultValue: '', description : '')
 	}
 	
@@ -23,20 +24,26 @@ pipeline {
 					echo "stage a ejecutar :" + params.stage
                                         if (params.herramienta == 'gradle' ){
                                                 //def ejecucion = load 'gradle.groovy'
-						if (params.stage.isEmpty()){
+						if (params.stage){
+						gradle.call()
+						} else {
+						echo "gradle sin parametros stage"
 						string(name: 'stage' , defaultValue: 'buid;sonar;run;test;nexus', description : '')
                                                 gradle.call()
-						} else {
-						gradle.call()
+					//	} else {
+					//	gradle.call()
 						}
 
                                         } else {
                                                 //def ejecucion = load 'maven.groovy'
-						 if (params.stage.isEmpty()){
+						if (params.stage){
+						maven.call()
+						} else {
+						echo "maven sin parametros stage"
                                                 string(name: 'stage' , defaultValue: 'buid;sonar;run;test;nexus', description : '')
                                                 maven.call()
-						} else {
-						maven.call()
+					//	} else {
+					//	maven.call()
 						}
                                         }
 
