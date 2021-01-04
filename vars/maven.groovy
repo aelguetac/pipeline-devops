@@ -34,7 +34,7 @@ def call(){
 			echo "Dentro de stage run"
                         env.TAREA = env.STAGE_NAME
 //                        bat 'nohup mvn spring-boot:run &'
-			bat "set JENKINS_NODE_COOKIE=dontKillMe && start /min mvn spring-boot:run ""
+			bat """set JENKINS_NODE_COOKIE=dontKillMe && start /min mvn spring-boot:run """
                         }
 	break
 	case "test":
