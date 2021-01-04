@@ -45,7 +45,10 @@ def call(){
                         env.TAREA = env.STAGE_NAME
 			echo "Dentro de stage test"
                         sh 'sleep 30'
-                        sh "curl -X GET 'http://localhost:8087/rest/mscovid/test?msg=testing'"
+			final String url = "http://localhost:8087/rest/mscovid/test?msg=testing"
+                    	final String response = sh(script: "curl -s $url", returnStdout: true).trim()
+                    	echo response
+//                        sh "curl -X GET 'http://localhost:8087/rest/mscovid/test?msg=testing'"
 
                         }
         break
