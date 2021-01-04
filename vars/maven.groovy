@@ -2,7 +2,7 @@ def call(){
 	echo "Inicio maven.goovy"
 	def cstage = params.stage.split(';')
 	for (int i = 0 ; i < cstage.length; i++){
-							echo " el primer for para ${cstage[i]}"
+			echo " el primer for para ${cstage[i]}"
 	switch("${cstage[i]}"){
 	case "build":
 			stage('build') {
@@ -56,9 +56,9 @@ def call(){
                 packages: [[ $class: 'MavenPackage', MavenAssetList: [[classifier: 'RELEASE', extensions: 'jar' ,
                 filePath: './nada/build/libs/DevOpsUsach2020-0.0.1.jar']],
                 mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging : 'jar', version: '0.0.1']]]
-	break
 
                         }
+	break		
 
 	}	
 	}
