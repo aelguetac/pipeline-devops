@@ -10,7 +10,7 @@ def call(){
 //			when { expression { ${cstage[i]} == 'build' }}
 //			when { expression { "${params.stage}" == "build" }}
 			env.TAREA = env.STAGE_NAME
-                        sh 'mvn clean pakage'
+                        bat 'mvn clean pakage'
 
 			}
         break
@@ -30,15 +30,15 @@ def call(){
 	case "run":
                         stage('Run'){
                         env.TAREA = env.STAGE_NAME
-                        sh 'mvn spring-boot:run | at now + 1 minutes'
+                        bat 'mvn spring-boot:run | at now + 1 minutes'
 
                         }
 	break
 	case "test":
                         stage('Test'){
                         env.TAREA = env.STAGE_NAME
-                        sh 'sleep 30'
-                        sh "curl -X GET 'http://localhost:8087/rest/mscovid/test?msg=testing'"
+                        bat 'sleep 30'
+                        bat "curl -X GET 'http://localhost:8087/rest/mscovid/test?msg=testing'"
 
                         }
 	break
