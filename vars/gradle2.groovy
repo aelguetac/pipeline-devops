@@ -3,7 +3,7 @@ def call(){
                         stage('build') {
                         env.TAREA = env.STAGE_NAME
 			echo "Dentro de stage build"
-                        sh "./gradlew clean build"
+                        bat "./gradlew clean build"
 
                         }
 
