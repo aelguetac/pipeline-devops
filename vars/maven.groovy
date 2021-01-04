@@ -10,12 +10,14 @@ def call(){
 //			when { expression { ${cstage[i]} == 'build' }}
 //			when { expression { "${params.stage}" == "build" }}
 			env.TAREA = env.STAGE_NAME
+			echo "Dentro de stage build"
                         bat 'mvn clean pakage'
 
 			}
         break
 	case "sonar":
                         stage('sonar') {
+			echo "Dentro de stage sonar"
                         env.TAREA = env.STAGE_NAME
                         def scannerHome = tool 'sonar_scanner';
 
@@ -29,13 +31,15 @@ def call(){
 	break
 	case "run":
                         stage('Run'){
+			echo "Dentro de stage run"
                         env.TAREA = env.STAGE_NAME
                         bat 'mvn spring-boot:run | at now + 1 minutes'
 
                         }
 	break
 	case "test":
-                        stage('Test'){
+                        stage('test'){
+			echo "Dentro de stage test"
                         env.TAREA = env.STAGE_NAME
                         bat 'sleep 30'
                         bat "curl -X GET 'http://localhost:8087/rest/mscovid/test?msg=testing'"
@@ -43,7 +47,8 @@ def call(){
                         }
 	break
 	case "nexus":
-                        stage('Nexus'){
+                        stage('nexus'){
+			echo "Dentro de stage nexus"
                         env.TAREA = env.STAGE_NAME
                         echo 'Testing failed!'
                         currentBuild.result = 'UNSTABLE'
