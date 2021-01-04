@@ -28,7 +28,7 @@ pipeline {
 						gradle.call()
 						} else {
 						echo "gradle sin parametros stage"
-						string(name: 'stage' , defaultValue: 'buid;sonar;run;test;nexus', description : '')
+						parameters {string(name: 'stage' , defaultValue: 'buid;sonar;run;test;nexus', description : '')}
                                                 gradle.call()
 					//	} else {
 					//	gradle.call()
@@ -40,7 +40,7 @@ pipeline {
 						maven.call()
 						} else {
 						echo "maven sin parametros stage"
-                                                string(name: 'stage' , defaultValue: 'buid;sonar;run;test;nexus', description : '')
+                                                parameters {string(name: 'stage' , defaultValue: 'buid;sonar;run;test;nexus', description : '')}
                                                 maven.call()
 					//	} else {
 					//	maven.call()
