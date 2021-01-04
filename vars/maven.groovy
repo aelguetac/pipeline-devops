@@ -60,7 +60,11 @@ def call(){
                         }
 	break		
 	default:
-		echo "valor ${cstage[i]} no valido, opciones permitidas son: build, sonar, run, test y nexus"
+            stage('ERROR'){
+        env.TAREA = env.STAGE_NAME
+	echo "valor ${cstage[i]} no valido, opciones permitidas son: build, sonar, run, test y nexus"
+        error("valor ${cstage[i]} no valido, opciones permitidas son: build, sonar, run, test y nexus")
+                        }
 	break
 	}	
 	}
