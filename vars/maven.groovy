@@ -22,8 +22,8 @@ def call(){
                         def scannerHome = tool 'sonar_scanner';
 
                         withSonarQubeEnv('sonar') {
-                                      sh "${scannerHome}/bin/sonar-scanner  -Dsonar.projectKey=ejemplo-gradle -Dsonar.java.binaries=build"
-        bat "${scannerHome}\\bin\\sonar-scanner -Dsonar.projectKey=ejemplo-gradle -Dsonar.java.binaries=build"
+                        	//sh "${scannerHome}/bin/sonar-scanner  -Dsonar.projectKey=ejemplo-gradle -Dsonar.java.binaries=build"
+        			bat "${scannerHome}\\bin\\sonar-scanner -Dsonar.projectKey=ejemplo-gradle -Dsonar.java.binaries=build"
 
                                         }
 
@@ -33,7 +33,7 @@ def call(){
                         stage('Run'){
 			echo "Dentro de stage run"
                         env.TAREA = env.STAGE_NAME
-                        bat 'mvn spring-boot:run | at now + 1 minutes'
+                        bat 'nohup mvn spring-boot:run &'
 
                         }
 	break
