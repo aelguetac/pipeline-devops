@@ -23,12 +23,21 @@ pipeline {
 					echo "stage a ejecutar :" + params.stage
                                         if (params.herramienta == 'gradle' ){
                                                 //def ejecucion = load 'gradle.groovy'
+						if (params.stage ==''){
+						string(name: 'stage' , defaultValue: 'buid;sonar;run;test;nexus', description : '')
                                                 gradle.call()
+						} else {
+						gradle.call()
+						}
 
                                         } else {
                                                 //def ejecucion = load 'maven.groovy'
+						 if (params.stage ==''){
+                                                string(name: 'stage' , defaultValue: 'buid;sonar;run;test;nexus', description : '')
                                                 maven.call()
-
+						} else {
+						maven.call()
+						}
                                         }
 
                         }
