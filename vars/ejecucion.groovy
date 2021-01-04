@@ -6,7 +6,7 @@ pipeline {
 
         parameters { 
 		choice(name: 'herramienta', choices : ['gradle','maven'], description :'')
-		message { se deben ingresar uno o mas de estos stage: buid;sonar;run;test;nexus, si no se ingresa ningun stage se ejecutaran todos }
+		//message { se deben ingresar uno o mas de estos stage: buid;sonar;run;test;nexus, si no se ingresa ningun stage se ejecutaran todos }
 		string(name: 'stage' , defaultValue: '', description : '')
 	}
 	
