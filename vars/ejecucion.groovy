@@ -28,9 +28,9 @@ pipeline {
 						gradle.call()
 						} else {
 						echo "gradle sin parametros stage"
-						def stage = "buid;sonar;run;test;nexus"
+						def stage = 'buid;sonar;run;test;nexus'
 						//build job: 'Pipeline', parameters [string(name: 'stage' , value: 'buid;sonar;run;test;nexus')]
-                                                gradle.call()
+                                                gradle2.call()
 					//	} else {
 					//	gradle.call()
 						}
@@ -41,9 +41,9 @@ pipeline {
 						maven.call()
 						} else {
 						echo "maven sin parametros stage"
-						def stage = "buid;sonar;run;test;nexus"
+						def stage = 'buid;sonar;run;test;nexus'
                                                 //build job: 'Pipeline', parameters [string(name: 'stage' , value: 'buid;sonar;run;test;nexus')]
-                                                maven.call()
+                                                maven2.call()
 					//	} else {
 					//	maven.call()
 						}
