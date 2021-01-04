@@ -2,7 +2,7 @@ def call(){
         echo "Inicio gradle.goovy"
         def cstage = params.stage.split(';')
         for (int i = 0 ; i < cstage.length; i++){
-		echo " el primer for para  ${cstage[i]}"
+		echo " ejecucion de FOR para  ${cstage[i]}"
       switch("${cstage[i]}"){
       case "build":
                         stage('build') {
@@ -44,7 +44,7 @@ def call(){
                         stage('test'){
                         env.TAREA = env.STAGE_NAME
 			echo "Dentro de stage test"
-                        sh 'sleep 30'
+                        bat 'sleep 30'
 			final String url = "http://localhost:8087/rest/mscovid/test?msg=testing"
                     	final String response = sh(script: "curl -s $url", returnStdout: true).trim()
                     	echo response
@@ -64,6 +64,10 @@ def call(){
 
                         }
 	break
+        default:
+                echo "valor ${cstage[i]} no valido, opciones permitidas son: build, sonar, run, test y nexus"
+        break
+
 	}
 	}
 }

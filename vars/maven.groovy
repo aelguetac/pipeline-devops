@@ -2,7 +2,7 @@ def call(){
 	echo "Inicio maven.goovy"
 	def cstage = params.stage.split(';')
 	for (int i = 0 ; i < cstage.length; i++){
-			echo " el primer for para ${cstage[i]}"
+			echo " ejecucion de for para ${cstage[i]}"
 	switch("${cstage[i]}"){
 	case "build":
 			stage('build') {
@@ -50,8 +50,8 @@ def call(){
                         stage('nexus'){
 			echo "Dentro de stage nexus"
                         env.TAREA = env.STAGE_NAME
-                        echo 'Testing failed!'
-                        currentBuild.result = 'UNSTABLE'
+//                        echo 'Testing failed!'
+//                        currentBuild.result = 'UNSTABLE'
                         nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'test-nexus',
                 packages: [[ $class: 'MavenPackage', MavenAssetList: [[classifier: 'RELEASE', extensions: 'jar' ,
                 filePath: './nada/build/libs/DevOpsUsach2020-0.0.1.jar']],
@@ -59,7 +59,9 @@ def call(){
 
                         }
 	break		
-
+	default:
+		echo "valor ${cstage[i]} no valido, opciones permitidas son: build, sonar, run, test y nexus"
+	break
 	}	
 	}
 }
