@@ -49,7 +49,7 @@ def call(){
 //                    	final String response = sh(script: "curl -s $url", returnStdout: true).trim()
 //                    	echo response
 //                        bat 'curl -s http://localhost:8087/rest/mscovid/test?msg=testing'
-                        bat 'curl -s http://localhost:8089'
+                        sh 'curl -s http://localhost:8089'
                         }
         break
         case "nexus":
