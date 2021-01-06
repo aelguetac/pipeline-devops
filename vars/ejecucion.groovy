@@ -14,6 +14,7 @@ pipeline {
                 stage('Pipeline') {
                         steps {
                                 script {
+					bat 'set'
                                         env.TAREA = ''
                                         env.JOB = 'env.JOB_NAME'
                                         //def cadena = "hola ${params.buildtool}"
