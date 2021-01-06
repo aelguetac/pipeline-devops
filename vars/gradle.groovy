@@ -44,12 +44,12 @@ def call(){
                         stage('test'){
                         env.TAREA = env.STAGE_NAME
 			echo "Dentro de stage test"
-                        bat 'waitfor dir /t 10 2>NUL'
+                        bat 'waitfor dir /t 5 2>NUL'
 //			final String url = "http://localhost:8087/rest/mscovid/test?msg=testing"
 //                    	final String response = sh(script: "curl -s $url", returnStdout: true).trim()
 //                    	echo response
 //                        bat 'curl -s http://localhost:8087/rest/mscovid/test?msg=testing'
-                        bat 'curl -s http://localhost:9000'
+                        bat 'curl -s http://localhost:8089'
                         }
         break
         case "nexus":
