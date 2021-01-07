@@ -21,10 +21,13 @@ pipeline {
                                         //def cadena = "hola ${params.buildtool}"
                                         echo "buildtool usada :" + params.herramienta
 					echo "integracion o entrega continua :" + params.cicd
+					
+
                                         if (params.herramienta == 'gradle' ){
 						figlet params.herramienta
+
 						//if (params.cicd == ci || findText(textFinders: [textFinder(regexp: '*feature*|*develop*', fileset : "env.GIT_BRANCH", alsoCheckConsoleOutput: true)])){
-						if (params.cicd == 'ci' || env.GIT_BRANCH == "*feature*" || env.GIT_BRANCH == "*develop" ){
+						if (params.cicd == 'ci' || env.GIT_BRANCH == "*feature*" || env.GIT_BRANCH == "*develop" && env.GIT_BRANCH != "*release*" ){
 						figlet params.cicd
 						cig.call()
 						} else {
@@ -38,7 +41,7 @@ pipeline {
                                         } else {
                                                 //def ejecucion = load 'maven.groovy'
 						figlet params.herramienta
-						if (params.cicd == 'ci' || env.GIT_BRANCH == "*feature*" || env.GIT_BRANCH == "*develop" ){
+						if (params.cicd == 'ci' || env.GIT_BRANCH == "*feature*" || env.GIT_BRANCH == "*develop" && env.GIT_BRANCH != "*release*" ){
 						figlet params.cicd
 						cim.call()
 						} else {
