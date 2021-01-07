@@ -50,7 +50,7 @@ def call(){
 //                        bat 'curl.exe -s -X http://localhost:8087/rest/mscovid/test?msg=testing'
 //                        bat 'curl.exe -s -X GET http://localhost:9000'
 //			bat 'curl -s -o /dev/null -w "%{http_code}" http://localhost:9000/'
-			bat 'curl --silent --fail http://httpstat.us/200 > /dev/null; echo $?'
+//			bat 'curl --silent --fail http://httpstat.us/200 > /dev/null; echo $?'
                         }
         break
         case "nexus":
