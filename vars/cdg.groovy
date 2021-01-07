@@ -17,6 +17,7 @@ def call(){
           stage('rest'){
                         env.TAREA = env.STAGE_NAME
 			echo "Dentro de stage test"
+			bat "curl -X GET http://localhost:8081/rest/mscovid/test?msg=testing"
                        // bat 'waitfor dir /t 5 2>NUL'
                         }
           stage('nexusCD'){
