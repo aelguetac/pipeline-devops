@@ -4,7 +4,7 @@ def call(){
 	stage('downloadNexus') {
                         env.TAREA = env.STAGE_NAME
 			echo "Dentro de stage downloadNexus"
-                        bat "curl -X GET -u admin:admin http://localhost:8081/test-nexus:com#browse/browse:%2Fdevopsusach2020%2FDevOpsUsach2020%2F0.0.1%2FDevOpsUsach2020-0.0.1.jar -o"
+                        bat "curl -X GET -u admin:admin http://localhost:8081/test-nexus:com#browse/browse:%2Fdevopsusach2020%2FDevOpsUsach2020%2F0.0.1%2FDevOpsUsach2020-0.0.1.jar -O"
 
                         }
 
