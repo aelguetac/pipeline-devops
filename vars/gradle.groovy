@@ -56,13 +56,15 @@ def call(){
         case "nexus":
                         stage('nexus'){
                         env.TAREA = env.STAGE_NAME
-//                        echo "se simula upload Nexus"
                         echo "Dentro de stage nexus"
-              nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'test-nexus',
-                packages: [[ $class: 'MavenPackage', MavenAssetList: [[classifier: 'RELEASE', extensions: 'jar' ,
-                filePath: './build/libs/DevOpsUsach2020-0.0.1.jar']],
-                mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging : 'jar', version: '0.0.1']]]
-
+//              nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'test-nexus',
+//                packages: [[ $class: 'MavenPackage', MavenAssetList: [[classifier: 'RELEASE', extensions: 'jar' ,
+//                filePath: './build/libs/DevOpsUsach2020-0.0.1.jar']],
+//                mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging : 'jar', version: '0.0.1']]]
+		nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'test-nexus', 
+		packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: 'jar', 
+		filePath: 'D:\\Diplomado\\talleres\\ejemplo-gradle\\build\\libs\\DevOpsUsach2020-0.0.1.jar']], 
+		mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging: 'jar', version: '0.0.1']]]
                         }
 	break
         default:
