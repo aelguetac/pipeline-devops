@@ -4,11 +4,10 @@ def call(){
 pipeline {
     agent any
 
-        parameters {
+        parameters { 
 		choice(name: 'herramienta', choices : ['gradle','maven'], description :'')
-		choice(name: 'cicd', choices : ['ci','cd'], description :'')
 		//message { se deben ingresar uno o mas de estos stage: buid;sonar;run;test;nexus, si no se ingresa ningun stage se ejecutaran todos }
-	//	string(name: 'stage' , defaultValue: '', description : '')
+		string(name: 'stage' , defaultValue: '', description : '')
 	}
 	
         stages {
@@ -19,29 +18,34 @@ pipeline {
                                         env.TAREA = ''
                                         env.JOB = 'env.JOB_NAME'
                                         //def cadena = "hola ${params.buildtool}"
+                                        //def cadena = "{env.TAREA}"
+                                        //def mensajes = "Build status ${buildStatus}: [Alejandro Elgueta] [${params.herramienta}] Ejecucion exitosa"
+                                        //def mensajef = "Build status ${buildStatus}: [Alejandro Elgueta] [${params.herramienta}] Ejecucion fallida en stage [${TAREA}]"
                                         echo "buildtool usada :" + params.herramienta
-					echo "integracion o entrega continua :" + params.cicd
-					figlet params.herramienta
-					figlet params.cicd
+					echo "stage a ejecutar :" + params.stage
+					figlet params.stage
                                         if (params.herramienta == 'gradle' ){
                                                 //def ejecucion = load 'gradle.groovy'
-						//if (params.cicd == ci || findText(textFinders: [textFinder(regexp: '*feature*|*develop*', fileset : "env.GIT_BRANCH", alsoCheckConsoleOutput: true)])){
-						if (params.cicd == ci || env.GIT_BRANCH == "*feature*" || env.GIT_BRANCH == "*develop" ){
-						cig.call()
+						if (params.stage){
+						gradle.call()
 						} else {
-						echo " se usa CD"
-                                                cdg.call()
+						echo "gradle sin parametros stage"
+						def stage = 'buid;sonar;run;test;nexus'
+						//build job: 'Pipeline', parameters [string(name: 'stage' , value: 'buid;sonar;run;test;nexus')]
+                                                gradle2.call()
 					//	} else {
 					//	gradle.call()
 						}
 
                                         } else {
                                                 //def ejecucion = load 'maven.groovy'
-						if (params.cicd == ci || env.GIT_BRANCH == "*feature*" || env.GIT_BRANCH == "*develop" ){
-						cim.call()
+						if (params.stage){
+						maven.call()
 						} else {
-						echo "se usa CD"
-                                                cdm.call()
+						echo "maven sin parametros stage"
+						def stage = 'buid;sonar;run;test;nexus'
+                                                //build job: 'Pipeline', parameters [string(name: 'stage' , value: 'buid;sonar;run;test;nexus')]
+                                                maven2.call()
 					//	} else {
 					//	maven.call()
 						}
