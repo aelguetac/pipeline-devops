@@ -41,7 +41,6 @@ def call(){
         break
         case "test":
                         stage('test'){
-			set +e
                         env.TAREA = env.STAGE_NAME
 			echo "Dentro de stage test"
                         bat 'waitfor dir /t 5 2>NUL'
