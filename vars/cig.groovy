@@ -27,7 +27,7 @@ def call(){
           stage('rest'){
                         env.TAREA = env.STAGE_NAME
 			echo "Dentro de stage test"
-                        bat 'waitfor dir /t 5 2>NUL'
+//                        bat 'waitfor dir /t 5 2>NUL'
                         }
           stage('nexusCI'){
                         env.TAREA = env.STAGE_NAME
